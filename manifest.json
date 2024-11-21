@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "RoboTears",
+    "version": "0.1",
+    "description": "LLMs are bad at art",
+    "icons": {
+        "32": "static/icons/robotears-32.png",
+        "48": "static/icons/robotears-48.png",
+        "96": "static/icons/robotears-96.png"
+    },
+    "browser_action": {
+        "default_icon": "static/icons/robotears-32.png",
+        "default_title": "RoboTears",
+        "default_popup": "static/popup/robotears_menu.html"
+    },
+    "options_ui": {
+        "page": "static/options/robotears_options.html"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ]
+}

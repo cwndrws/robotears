@@ -4,7 +4,8 @@
   "description": "ai can't make art",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "start:firefox": "web-ext run --source-dir . --devtools"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/cwndrws/robotears/issues"
   },
-  "homepage": "https://github.com/cwndrws/robotears#readme"
+  "homepage": "https://github.com/cwndrws/robotears#readme",
+  "devDependencies": {
+    "web-ext": "^8.3.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  }
 }

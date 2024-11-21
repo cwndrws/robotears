@@ -1,59 +1,42 @@
-async function processForm(e) {
-    if (e.preventDefault) e.preventDefault();
+import { getCurrentPageText } from '../browser_utilities';
+import { Prompter } from '../ai';
 
-    const form = findForm("robo_tears_form");
-    const formData = new FormData(form);
+const prompter = new Prompter();
+const scrapeButton = document.getElementById("scrapeButton");
+const filterContentPrompt = document.getElementById("filterContentPrompt");
+const filterContentButton = document.getElementById("filterContentButton");
+const evaluateEmotionsPrompt = document.getElementById("evaluateEmotionsPrompt");
+const evaluateEmotionsButton = document.getElementById("evaluateEmotionsButton");
+const composeMusicPrompt = document.getElementById("composeMusicPrompt");
+const composeMusicButton = document.getElementById("composeMusicButton");
 
-    // const inputValue = document.getElementById("robo_tears_prompt").value;
-    // alert(`got ${inputValue}!`);
-
+async function scrapeClick() {
     const text = await getCurrentPageText();
-    console.log(`got the following page text\n${text}`);
+    const prompt = prompter.filterContentPrompt(text);
+    filterContentPrompt.value = prompt;
+    filterContentPrompt.disabled = false;
+    filterContentButton.disabled = false;
     return false;
 }
 
-
-function findForm(name) {
-    const form = document.getElementById(name);
-    return form;
+async function filterClick() {
+    const prompt = filterContentPrompt.value;
+    const promptResponse = await prompter.prompt(prompt);
+    console.log(promptResponse);
 }
 
-const getPageText = async () => {
-    console.log(`we're in!`);
-    const pageText = document.body.innerText;
-    console.log(`got the following page text from inside the page\n${pageText}`);
-    return pageText;
+async function emotionalEvalClick() {
+    console.log(`clicked Evaluate Emotions!`);
+    return false;
 }
 
-async function getCurrentPageText() {
-    console.log("about to execute the thing");
-    const tabId = await currentTabId();
-    const executionDetails = {
-        func: getPageText,
-        target: {
-            tabId: tabId
-        }
-    };
-    let results = null;
-    try {
-        results = await browser.scripting.executeScript(executionDetails);
-        console.log(results);
-    } catch (err) {
-        console.error(`failed to execute script: ${err}`);
-    }
-    console.log(JSON.stringify(results));
-    return results;
+async function composeClick() {
+    console.log(`clicked Compose!`);
+    return false;
 }
 
-async function currentTabId() {
-    const tabs = await browser.tabs.query({currentWindow: true, active: true});
-    const tab = tabs[0];
-    return tab.id;
-}
-
-form = findForm("robo_tears_form");
-if (form.attachEvent) {
-    form.attachEvent("submit", processForm)
-} else {
-    form.addEventListener("submit", processForm)
-}
+// Setting all our click listeners
+scrapeButton.addEventListener('click', scrapeClick);
+filterContentButton.addEventListener('click', filterClick);
+evaluateEmotionsButton.addEventListener('click', emotionalEvalClick);
+composeMusicButton.addEventListener('click', composeClick);
