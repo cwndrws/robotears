@@ -21,5 +21,8 @@
     "web-ext": "^8.3.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "openai": "^4.73.0"
   }
 }
