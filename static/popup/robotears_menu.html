@@ -22,6 +22,8 @@
                 </div>
                 <div>
                     <button id="filterContentButton" type="button" disabled>Filter!</button>
+                    <button id="cacheFilterContentPromptButton" type="button"
+                        disabled>Cache prompt</button>
                 </div>
             </div>
             <br />
@@ -34,7 +36,9 @@
                     <textarea id="evaluateEmotionsPrompt" cols="80" disabled></textarea>
                 </div>
                 <div>
-                    <button id="evaluateEmotionsButton" type="button" disabled>Evaluate Emotions!</button>
+                    <button id="evaluateEmotionsButton" type="button" disabled>Evaluate emotions!</button>
+                    <button id="cacheEvaluateEmotionsPromptButton" type="button"
+                        disabled>Cache prompt</button>
                 </div>
             </div>
             <br />
@@ -48,7 +52,14 @@
                 </div>
                 <div>
                     <button id="composeMusicButton" type="button" disabled>Compose!</button>
+                    <button id="cacheComposeMusicPromptButton" type="button"
+                        disabled>Cache prompt</button>
                 </div>
+            </div>
+            <br />
+
+            <div>
+                <button id="playButton" type="button" disabled>Play!</button>
             </div>
         </div>
         <script src="../../dist/robotears_menu.js"></script>

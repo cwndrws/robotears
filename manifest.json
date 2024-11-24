@@ -17,6 +17,7 @@
         "page": "static/options/robotears_options.html"
     },
     "permissions": [
+        "*://*/*",
         "activeTab",
         "scripting",
         "storage"

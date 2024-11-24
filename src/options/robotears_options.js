@@ -1,11 +1,13 @@
-import { setOpenAiKey } from '../ai/openai';
+import { OpenAiClient } from '../ai/openai';
 
 async function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
+    const client = new OpenAiClient();
+
     const openAiKeyInputValue = document.getElementById("open_ai_key").value;
 
-    await setOpenAiKey(key);
+    await client.setKey(openAiKeyInputValue);
     return false;
 }
 
